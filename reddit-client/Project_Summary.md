@@ -83,3 +83,14 @@ Notice here you didn’t add .json at the end of the URL. You actually added it 
 ## To keep in mind
     - The Reddit API will return some user content (comments) in Markdown. You should find a way to display the Markdown in your application.
     - Note: As of July 01, 2023, free use of Reddit APIs is limited to 10 queries per minute. If you begin to hit the rate limit while developing this app, subsequent queries may fail until the timer resets. You’ll need to consider how to address this programmatically.
+
+
+# Timeline
+- First week: 
+    - Making the Wireframe - ✅
+        I tested making a "Wireframe" of my idea of the site, and figma made me an entire site with react and typescript lol, but I still keep it in mind to use it later.
+    - Create Files and run it locally - ✅
+        I already created the app, and installed react and redux to use the store management for global states.
+    - Create Version Control - ✅
+    - Building the components
+    - Test Reddit API
