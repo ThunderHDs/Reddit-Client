@@ -92,5 +92,5 @@ Notice here you didn’t add .json at the end of the URL. You actually added it 
     - Create Files and run it locally - ✅
         I already created the app, and installed react and redux to use the store management for global states.
     - Create Version Control - ✅
-    - Building the components
+    - Building the components - In proccess, components built, just have to test de API to be sure.
     - Test Reddit API
