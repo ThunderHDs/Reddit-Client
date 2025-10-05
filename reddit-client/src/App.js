@@ -1,5 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
+import { useSelector } from 'react-redux';
 import PostCard from './components/postcard/PostCard.js';
 import Navbar from './components/navbar/Navbar.js';
 
@@ -8,18 +9,18 @@ const posts =[
     id: "1",
     title: "Getting paid on the Wall of Death in Rajkot, India",
     author: "mohitsman",
-    subreddit: "r/nextfuckinglevel",
+    subreddit: "nextfuckinglevel",
     timeAgo: "7 hours ago",
     upvotes: 35800,
     comments: 690,
     imageUrl: "https://images.unsplash.com/photo-1681679260852-9e3655858c92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjB3b3JrZXIlMjB3YWxsfGVufDF8fHx8MTc1OTM0MzExNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    content: "This incredible stunt performer shows amazing skill and courage while working on the Wall of Death in India."
+    content: "This incredible stunt performer shows amazing skill and courage while working on the Wall of Death in India.",
   },
   {
     id: "2",
     title: "California skies. A month until my due date and my world is red.",
     author: "sunset_mama",
-    subreddit: "r/pics",
+    subreddit: "pics",
     timeAgo: "12 hours ago",
     upvotes: 12800,
     comments: 234,
@@ -30,7 +31,7 @@ const posts =[
     id: "3",
     title: "Just finished my first full-stack application after 6 months of learning",
     author: "newbie_dev",
-    subreddit: "r/programming",
+    subreddit: "programming",
     timeAgo: "1 day ago",
     upvotes: 8900,
     comments: 156,
@@ -41,7 +42,7 @@ const posts =[
     id: "4",
     title: "Hiked 15 miles to capture this sunrise in the Rockies",
     author: "mountain_explorer",
-    subreddit: "r/EarthPorn",
+    subreddit: "EarthPorn",
     timeAgo: "2 days ago",
     upvotes: 45200,
     comments: 892,
@@ -52,7 +53,7 @@ const posts =[
     id: "5",
     title: "My 90-year-old grandmother just learned to use a smartphone",
     author: "proudgrandkid",
-    subreddit: "r/MadeMeSmile",
+    subreddit: "MadeMeSmile",
     timeAgo: "3 days ago",
     upvotes: 28500,
     comments: 445,
@@ -62,7 +63,7 @@ const posts =[
     id: "6",
     title: "Local bakery gives free bread to anyone who needs it",
     author: "community_hero",
-    subreddit: "r/HumansBeingBros",
+    subreddit: "HumansBeingBros",
     timeAgo: "4 days ago",
     upvotes: 67800,
     comments: 1234,
@@ -70,12 +71,39 @@ const posts =[
   }
 ];
 
+const uniqueSubreddits = [...new Set(posts.map((post) => post.subreddit))]; //Categories for the posts
+
 function App() {
+  //Including logic to show the filtered posts based on the searchterm
+  const searchTerm = useSelector((state) => state.feed.searchTerm);
+  const activeFilters = useSelector((state) => state.feed.activateFilters);
+
+  const filteredPosts = posts.filter((post) => {
+    const lowerCaseSearchTerm = searchTerm.toLowerCase(); //Lowercasing the search terms
+    
+    const searchMatch =  //Identifing the matching for search
+    post.title.toLowerCase().includes(lowerCaseSearchTerm) ||
+    post.author.toLowerCase().includes(lowerCaseSearchTerm);
+
+    const categoryMatch = //Matching the filters, if there is any filter active, then show the posts filtered
+      activeFilters.length === 0 || activeFilters.includes(post.subreddit);
+
+    return searchMatch && categoryMatch;
+  }
+
+  );
+  //Debugin temporal
+  console.log("searchTerm",searchTerm);
+  console.log("filteredPosts",filteredPosts);
+  console.log("category",activeFilters);
+
+
   return (
     <div className="App">
-      <Navbar/>
+      <div className='strangeContainer'></div>
+      <Navbar category={uniqueSubreddits}/>
         <div className='postContainer'> 
-          {posts.map((post) => (
+          {filteredPosts.map((post) => (
             <PostCard title={post.title} author={post.author} imageUrl={post.imageUrl} content={post.content} comments={post.comments} upvotes={post.upvotes} timeAgo={post.timeAgo}/>
           ))}
         </div>

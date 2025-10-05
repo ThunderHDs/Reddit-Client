@@ -1,9 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-// Más adelante importaremos aquí los "reducers" de nuestros slices.
+import feedReducer from '../features/feed/feedSlice.js';
 
 export const store = configureStore({
     reducer: {
-        // Aquí es donde añadiremos los reducers.
-        // Por ejemplo: posts: postsReducer,
+        feed: feedReducer, //reducer with the searchbar and active Filters actions
     },
 });
