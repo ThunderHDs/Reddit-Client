@@ -14,7 +14,7 @@ Build the application using React and Redux
 
 - Write unit tests for your components using Jest and Enzyme ✅
 
-- Write end-to-end tests for your application
+- Write end-to-end tests for your application ✅
 
 - Users can use the application on any device (desktop to mobile)
 

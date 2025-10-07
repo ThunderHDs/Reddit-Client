@@ -1,0 +1,23 @@
+.navbar {
+    /*Existing stiles*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    height: 70px; /* Defining later to be responsive*/
+
+    /*Liquid glass stiles - glassmorphism*/
+    background: rgba(255, 255, 255, 0.15); /* Color de fondo semi-transparente */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    /*Keeping the navbar fixed*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    z-index: 1000;
+    
+}

@@ -1,0 +1,61 @@
+.PostCard {
+    border: solid;
+    border-color: rgb(42, 165, 73);
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.votesContainer {
+    display: flex;
+    flex-direction: row; /* Los botones de votos en fila */
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee; /* Línea divisoria en móvil */
+    border-right: none; /* Quita el borde derecho en móvil */
+}
+
+.PostCard .Container {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente en móvil */
+    width: 100%;
+}
+
+.Container img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.post-title-link {
+    text-decoration: none;
+    color: inherit; /* Hereda el color del texto de su padre */
+}
+
+.vote-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #878a8c; /* Color gris por defecto */
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+/* Estilo para cuando el botón ha sido presionado */
+.vote-button.upvoted {
+    color: #ff4500; /* Naranja permanente */
+}
+
+.vote-button.downvoted {
+    color: #4c00ff; /* Naranja permanente */
+}
