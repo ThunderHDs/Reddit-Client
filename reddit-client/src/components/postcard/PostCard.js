@@ -1,4 +1,4 @@
-import './PostCard.css';
+//import './PostCard.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -42,33 +42,77 @@ const PostCard = ({ id, title, author, imageUrl, content, comments, upvotes, dow
     };
 
     return (
-        <div className="PostCard">
-            <Link to={`/post/${id}`} className="post-title-link">
-                <h1>{title}</h1>
+        <div className="bg-white rounded-xl shadow p-4 mb-6 flex flex-col gap-2">
+            {/* Author and date */}
+            <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
+                <span className="font-semibold">{author}</span>
+                <span>•</span>
+                <span>{timeAgo}</span>
+            </div>
+            {/* Title */}
+            <Link to={`/post/${id}`} className="font-semibold text-lg text-gray-800 hover:underline break-words mb-2">
+                {title}
             </Link>
-            <div className='Container'>
-                <div className='votesContainer'>
-                    <button onClick={handleVoteUp} className={`vote-button ${votesUp ? 'upvoted' : ''}`}>
-                        ▲
+            {/* Image */}
+            {imageUrl && (
+                <img src={imageUrl} alt={title} className="max-w-full rounded-lg mx-auto my-2" />
+            )}
+            {/* Content (optional, can be hidden if you want focus on image) */}
+            {content && (
+                <div className="text-gray-700 break-words mb-2">{content}</div>
+            )}
+            {/* Votes and comments */}
+            <div className="flex justify-between items-center mt-2">
+                <div
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full transition font-semibold
+                        ${
+                            votesUp
+                                ? 'bg-orange-600 text-white'
+                                : votesDown
+                                ? 'bg-indigo-600 text-white'
+                                : 'bg-gray-100 text-gray-700'
+                        }`}
+                >
+                    <button
+                        onClick={handleVoteUp}
+                        className="focus:outline-none"
+                        aria-label="Upvote"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={`h-5 w-5 ${votesUp ? 'text-white' : 'text-gray-500'}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                        </svg>
                     </button>
-                    <h1>{currentVotes}</h1>
-                    <button onClick={handleVoteDown} className={`vote-button ${votesDown ? 'downvoted' : ''}`}>
-                        ▼
+                    <span className="font-semibold text-base">{currentVotes}</span>
+                    <button
+                        onClick={handleVoteDown}
+                        className="focus:outline-none"
+                        aria-label="Downvote"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={`h-5 w-5 ${votesDown ? 'text-white' : 'text-gray-500'}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
                     </button>
                 </div>
-                <div className='contentContainer'>
-                    <img src={imageUrl} alt={title}/>
-                    <p>{content}</p>
-                    <div className='buttonContainer'>
-                        <h4>Author {author}</h4>
-                        <h4>{timeAgo}</h4>
-                        <button>Comments {comments}</button>
-                    </div>
-                </div>
+                <button className="flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 hover:bg-blue-100 text-gray-600">
+                    💬 {comments}
+                </button>
             </div>
         </div>
-
-    )
+    );
 };
 
 export default PostCard;

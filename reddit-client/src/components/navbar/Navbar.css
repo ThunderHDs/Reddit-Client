@@ -1,23 +1,66 @@
 .navbar {
-    /*Existing stiles*/
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: rgb(0, 0, 0);
-    height: 70px; /* Defining later to be responsive*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height, 70px);
+  width: 100vw;
+  padding: 0 12px;
+  background: var(--glass-bg, rgba(220,220,220,0.7));
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
 
-    /*Liquid glass stiles - glassmorphism*/
-    background: rgba(255, 255, 255, 0.15); /* Color de fondo semi-transparente */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+.navbar-logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+  flex-shrink: 0;
+}
 
-    /*Keeping the navbar fixed*/
-    position: fixed;
-    top: 0;
-    left: 0;
-    width:100%;
-    z-index: 1000;
-    
+.search-filters-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(220, 220, 220, 0.7);
+  border-radius: 24px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  margin-left: auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 4px;
+  }
+  .search-filters-container {
+    max-width: 95vw;
+    padding: 6px 6px;
+    gap: 6px;
+  }
+  .searchbar-container input,
+  .filters-button {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 375px) {
+  .search-filters-container {
+    max-width: 140px;
+    gap: 4px;
+    padding: 4px 4px;
+  }
+  .searchbar-container input,
+  .filters-button {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+    height: 28px;
+  }
 }

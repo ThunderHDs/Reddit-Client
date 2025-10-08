@@ -1,61 +1,62 @@
 .PostCard {
-    border: solid;
-    border-color: rgb(42, 165, 73);
-    margin: 2%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.votesContainer {
-    display: flex;
-    flex-direction: row; /* Los botones de votos en fila */
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee; /* Línea divisoria en móvil */
-    border-right: none; /* Quita el borde derecho en móvil */
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: var(--box-shadow);
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .PostCard .Container {
-    display: flex;
-    flex-direction: column; /* Apila los elementos verticalmente en móvil */
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.Container img {
-    width: 80%;
-    height: 80%;
-    object-fit: contain;
+.votesContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+@media (min-width: 768px) {
+  .PostCard .Container {
+    flex-direction: row;
+  }
+  .votesContainer {
+    flex-direction: column;
+    border-bottom: none;
+    border-right: 1px solid #eee;
+    padding: 20px 10px;
+    flex: 0 0 100px;
+  }
 }
 
 .buttonContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .post-title-link {
-    text-decoration: none;
-    color: inherit; /* Hereda el color del texto de su padre */
+  text-decoration: none;
+  color: inherit;
 }
 
 .vote-button {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #878a8c; /* Color gris por defecto */
-    cursor: pointer;
-    transition: color 0.2s;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #878a8c;
+  cursor: pointer;
+  transition: color 0.2s;
 }
 
-/* Estilo para cuando el botón ha sido presionado */
 .vote-button.upvoted {
-    color: #ff4500; /* Naranja permanente */
-}
-
-.vote-button.downvoted {
-    color: #4c00ff; /* Naranja permanente */
+  color: #ff4500;
 }
