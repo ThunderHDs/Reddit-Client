@@ -3,7 +3,11 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 //Defining our API slice
 export const redditApi = createApi({
     reducerPath: 'redditApi', //Reducer's name into the store
-    baseQuery: fetchBaseQuery({ baseUrl: '/'}), //API's URL base, using proxy to avoid CORS issues
+    baseQuery: fetchBaseQuery({ 
+        baseUrl: process.env.NODE_ENV === 'production' 
+            ? 'https://www.reddit.com' 
+            : '/' 
+    }), //API's URL base, using proxy to avoid CORS issues
     keepUnusedDataFor: 300,
     endpoints: (builder) => ({
         //Endpoint to obtain subreddit feed
