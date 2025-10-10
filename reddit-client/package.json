@@ -2,6 +2,9 @@
   "name": "reddit-client",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "proxy": "https://www.reddit.com",
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
@@ -50,8 +53,5 @@
     "autoprefixer": "^10.4.21",
     "cypress": "^15.3.0",
     "tailwindcss": "^3.4.18"
-  },
-  "engines": {
-    "node": "18.x"
   }
 }
