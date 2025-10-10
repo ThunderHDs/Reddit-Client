@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 
-const PostCard = ({ id, title, author, imageUrl, content, comments, upvotes, downvotes, timeAgo }) => {
+const PostCard = memo(({ id, title, author, imageUrl, content, comments, upvotes, downvotes, timeAgo }) => {
     // State to manage votes
     const [votesUp, setVotesUp] = useState(false);
     const [votesDown, setVotesDown] = useState(false);
@@ -40,6 +40,8 @@ const PostCard = ({ id, title, author, imageUrl, content, comments, upvotes, dow
         };
     };
 
+    const optimizedImageUrl = imageUrl?.replace(/\.(jpg|png)$/, '_640.$1');
+
     return (
         <div className="bg-white rounded-xl shadow p-4 mb-6 flex flex-col gap-2">
             {/* Author and date */}
@@ -54,7 +56,7 @@ const PostCard = ({ id, title, author, imageUrl, content, comments, upvotes, dow
             </Link>
             {/* Image */}
             {imageUrl && (
-                <img src={imageUrl} alt={title} className="max-w-full rounded-lg mx-auto my-2" />
+                <img src={optimizedImageUrl} alt={title} loading="lazy" className="max-w-full rounded-lg mx-auto my-2" />
             )}
             {/* Content  */}
             {content && (
@@ -112,6 +114,6 @@ const PostCard = ({ id, title, author, imageUrl, content, comments, upvotes, dow
             </div>
         </div>
     );
-};
+});
 
 export default PostCard;

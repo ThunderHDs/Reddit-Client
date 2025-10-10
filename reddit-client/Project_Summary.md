@@ -16,10 +16,10 @@ Build the application using React and Redux
 
 - Write end-to-end tests for your application ✅
 
-- Users can use the application on any device (desktop to mobile)
+- Users can use the application on any device (desktop to mobile) ✅
 
-- Users can use the application on any modern browser
-
+- Users can use the application on any modern browser ✅
+    
 - Users can access your application at a URL
 
 - Users see an initial view of the data when first visiting the app ✅
@@ -36,7 +36,7 @@ Build the application using React and Redux
 
 - Users are able to leave an error state
 
-- Get 90+ scores on Lighthouse
+- Get 90+ scores on Lighthouse ✅
     - We understand you cannot control how media assets like videos and images are sent to the client. It is okay to have a score below 90 for Performance if they are related to the media from Reddit.
 
 - OPTIONAL: Get a custom domain name and use it for your application

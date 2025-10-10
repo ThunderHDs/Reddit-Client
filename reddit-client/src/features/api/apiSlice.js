@@ -4,6 +4,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 export const redditApi = createApi({
     reducerPath: 'redditApi', //Reducer's name into the store
     baseQuery: fetchBaseQuery({ baseUrl: '/'}), //API's URL base, using proxy to avoid CORS issues
+    keepUnusedDataFor: 300,
     endpoints: (builder) => ({
         //Endpoint to obtain subreddit feed
         getFeed: builder.query({
