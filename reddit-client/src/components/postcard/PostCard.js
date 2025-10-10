@@ -1,14 +1,13 @@
-//import './PostCard.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 
 const PostCard = ({ id, title, author, imageUrl, content, comments, upvotes, downvotes, timeAgo }) => {
-
+    // State to manage votes
     const [votesUp, setVotesUp] = useState(false);
     const [votesDown, setVotesDown] = useState(false);
     const [currentVotes, setCurrentVotes] = useState(upvotes);
-
+    // Handlers for voting
     const handleVoteUp = () => {
         if (votesUp) {
             setCurrentVotes(currentVotes - 1);
@@ -57,7 +56,7 @@ const PostCard = ({ id, title, author, imageUrl, content, comments, upvotes, dow
             {imageUrl && (
                 <img src={imageUrl} alt={title} className="max-w-full rounded-lg mx-auto my-2" />
             )}
-            {/* Content (optional, can be hidden if you want focus on image) */}
+            {/* Content  */}
             {content && (
                 <div className="text-gray-700 break-words mb-2">{content}</div>
             )}

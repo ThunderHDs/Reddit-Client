@@ -1,11 +1,11 @@
-//import './PostDetailPage.css';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useGetPostDetailsQuery } from '../../features/api/apiSlice.js';
 
 const PostDetailPage = () => {
+    // Extracting postId from the URL parameters
     const { postId } = useParams();
-
+    // Fetching post details using the custom hook
     const {
         data,
         isLoading,
@@ -24,10 +24,12 @@ const PostDetailPage = () => {
 
     return (
         <div className="max-w-2xl mx-auto pt-24 px-4">
+            {/* Back link */}
             <Link to={`/`} className="inline-block mb-4 text-blue-600 hover:underline font-medium">
                 &larr; Volver
             </Link>
 
+            {/* Post details */}
             <div className="bg-white rounded-xl shadow p-6 mb-8">
                 <h1 className="text-2xl font-bold text-gray-800 mb-2">{post.title}</h1>
                 <p className="text-sm text-gray-500 mb-4">by {post.author}</p>
@@ -36,7 +38,7 @@ const PostDetailPage = () => {
                 )}
                 {post.content && <p>{post.content}</p>}
             </div>
-
+            {/* Comments Section */}
             <div className="bg-white rounded-xl shadow p-6">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">Comentarios</h2>
                 {comments.length === 0 && (

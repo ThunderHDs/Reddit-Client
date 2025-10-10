@@ -1,5 +1,3 @@
-//import logo from './logo.svg';
-//import './App.css';
 import { useSelector } from 'react-redux';
 import PostCard from './components/postcard/PostCard.js';
 import Navbar from './components/navbar/Navbar.js';
@@ -20,21 +18,13 @@ const PostList = () => {
     isError,
   } = useGetFeedQuery(selectedSubreddit);
 
-
+  //Filtering posts based on the search term
   const filteredPosts = posts.filter(post => 
     post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     post.author.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  //Debugin temporal
-  /*
-  console.log("searchTerm",searchTerm);
-  console.log("filteredPosts",filteredPosts);
-  console.log("subreddits",selectedSubreddit);
-  console.log("posts data",posts);
-  console.log("is loading?", isLoading);
-  console.log("is error?", isError);*/
-
+  //Handling loading and error states
   if (isLoading) {
     return <div  className="text-center py-8 text-gray-500">Loading...</div>;
   }

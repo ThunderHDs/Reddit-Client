@@ -1,4 +1,3 @@
-//import './Filters.css';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {setSelectedSubreddit} from "../../../features/feed/feedSlice";
@@ -35,8 +34,8 @@ const Filters = ({subreddits}) => {
                         className={`block w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 truncate ${
                                 activeSubreddit === `r/${subreddit}` ? 'font-bold text-blue-600' : ''
                             }`}
-                        >
-                            {subreddit}
+                    >
+                        {subreddit}
                     </button>
                     ))}
                 </div>
